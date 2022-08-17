@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2021 09:40:19 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Equipo" table="equipo" catalog="campeonato" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreE" type="string">
+            <column name="nombre_e" length="20" not-null="true" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="40" not-null="true" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="codigo" length="20" not-null="true" />
+        </property>
+        <property name="numPuntos" type="int">
+            <column name="num_puntos" not-null="true" />
+        </property>
+        <property name="PGanados" type="int">
+            <column name="p_ganados" not-null="true" />
+        </property>
+        <property name="PPerdidos" type="int">
+            <column name="p_perdidos" not-null="true" />
+        </property>
+        <property name="PJugados" type="int">
+            <column name="p_jugados" not-null="true" />
+        </property>
+        <set name="jugadoreses" table="jugadores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="equipo" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Jugadores" />
+        </set>
+        <set name="partidosForEquipo2" table="partido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="equipo2" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Partido" />
+        </set>
+        <set name="partidosForEquipo1" table="partido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="equipo1" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Partido" />
+        </set>
+    </class>
+</hibernate-mapping>

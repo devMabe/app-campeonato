@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2021 09:40:19 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Jugadores" table="jugadores" catalog="campeonato" optimistic-lock="version">
+        <id name="cedula" type="int">
+            <column name="cedula" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="equipo" class="modelo.Equipo" fetch="select">
+            <column name="equipo" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="60" not-null="true" />
+        </property>
+        <property name="numAmarillas" type="int">
+            <column name="num_amarillas" not-null="true" />
+        </property>
+        <property name="numRojas" type="int">
+            <column name="num_rojas" not-null="true" />
+        </property>
+        <property name="numGoles" type="int">
+            <column name="num_goles" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

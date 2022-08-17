@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/06/2021 09:40:19 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Partido" table="partido" catalog="campeonato" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="equipoByEquipo2" class="modelo.Equipo" fetch="select">
+            <column name="equipo2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="equipoByEquipo1" class="modelo.Equipo" fetch="select">
+            <column name="equipo1" not-null="true" />
+        </many-to-one>
+        <property name="goles1" type="int">
+            <column name="goles1" not-null="true" />
+        </property>
+        <property name="goles2" type="int">
+            <column name="goles2" not-null="true" />
+        </property>
+        <property name="rojas1" type="int">
+            <column name="rojas1" not-null="true" />
+        </property>
+        <property name="amarillas1" type="int">
+            <column name="amarillas1" not-null="true" />
+        </property>
+        <property name="rojas2" type="int">
+            <column name="rojas2" not-null="true" />
+        </property>
+        <property name="amarillas2" type="int">
+            <column name="amarillas2" not-null="true" />
+        </property>
+        <property name="finalizar" type="int">
+            <column name="finalizar" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
